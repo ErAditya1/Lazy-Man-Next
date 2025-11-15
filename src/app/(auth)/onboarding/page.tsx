@@ -1,4 +1,5 @@
 // pages/onboarding.tsx
+'use client'
 import React from 'react';
 
 import { OnboardingCarouselScreen } from '@/components/screens/OnboardingCarouselScreen';

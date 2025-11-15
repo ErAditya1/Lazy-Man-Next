@@ -5,7 +5,7 @@ import {
   Verified, Clock, Shield, Award, ChevronRight,
   Calendar, IndianRupee
 } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 const mockProvider = {
   id: 1,
@@ -13,7 +13,7 @@ const mockProvider = {
   service: 'Professional Plumber',
   serviceHindi: 'पेशेवर प्लम्बर',
   rating: 4.8,
-  reviews: 234,
+  reviewsCount: 234,
   distance: 2.5,
   hourlyRate: 299,
   fixedRate: 499,
@@ -83,7 +83,7 @@ export default function ProviderProfile() {
   };
 
   const displayedReviews = showAllReviews 
-    ? mockProvider.reviews 
+    ? mockProvider.reviewsCount 
     : mockProvider.reviews.slice(0, 2);
 
   return (
@@ -124,7 +124,7 @@ export default function ProviderProfile() {
               <div className="flex items-center gap-1">
                 <Star className="w-5 h-5 text-[#F59E0B]" fill="#F59E0B" />
                 <span className="font-medium">{mockProvider.rating}</span>
-                <span className="text-[#9CA3AF]">({mockProvider.reviews})</span>
+                <span className="text-[#9CA3AF]">({mockProvider.reviews[0]?.name})</span>
               </div>
               <div className="flex items-center gap-1 text-[#6B7280]">
                 <MapPin className="w-4 h-4" />
@@ -232,7 +232,7 @@ export default function ProviderProfile() {
         </div>
 
         <div className="space-y-4">
-          {displayedReviews.map((review) => (
+          {mockProvider?.reviews?.map((review) => (
             <div key={review.id} className="pb-4 border-b border-[#E5E7EB] last:border-0">
               <div className="flex items-center justify-between mb-2">
                 <h4>{review.name}</h4>

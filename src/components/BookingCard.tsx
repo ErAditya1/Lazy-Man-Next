@@ -82,7 +82,7 @@ export function BookingCard({ booking, lang, onClick }: BookingCardProps) {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  window.open(`https://wa.me/${booking.provider.whatsapp.replace(/[^0-9]/g, '')}`, '_blank');
+                  window.open(`https://wa.me/${booking.provider.whatsapp?.replace(/[^0-9]/g, '')}`, '_blank');
                 }}
                 className="p-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
                 aria-label={t('message', lang)}

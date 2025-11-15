@@ -75,3 +75,11 @@ export interface User {
   email?: string;
   photo?: string;
 }
+
+
+export interface ChatMessage {
+  id: string;
+  text: string;
+  sender: 'user' | 'bot';
+  isTyping?: boolean;
+}

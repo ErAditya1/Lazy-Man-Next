@@ -6,6 +6,7 @@ import { useApp } from '../../context/AppContext';
 import { DesktopNav } from '@/components/DesktopNav';
 import { BottomNav } from '@/components/BottomNav';
 import { usePathname, useRouter } from 'next/navigation';
+import Chatbot from '@/components/Chatbot';
 
 type Props = { children: React.ReactNode };
 
@@ -34,9 +35,11 @@ export  default function ({ children }:Props) {
     else if (tab === 'bookings') router.push('/bookings');
     else if (tab === 'profile') router.push('/profile');
     else if (tab === 'provider-dashboard') router.push('/provider/dashboard');
+    else if (tab === 'aiplanner') router.push('/aiplanner');
+    
   };
 
-  const handleBottomNavNavigate = (tab: 'home'|'search'|'bookings'|'profile') => {
+  const handleBottomNavNavigate = (tab: 'home'|'search'|'bookings'|'profile' ) => {
     if (tab === 'home') router.push('/home');
     else if (tab === 'search') router.push('/search');
     else if (tab === 'bookings') router.push('/bookings');
@@ -45,6 +48,7 @@ export  default function ({ children }:Props) {
 
   return (
     <div className="min-h-screen">
+      <Chatbot/>
       {showNav && (
         <DesktopNav
           active={path.includes('/provider/dashboard') ? 'provider-dashboard' : (path.includes('/search') ? 'search' : (path.includes('/bookings') ? 'bookings' : (path === '/profile' ? 'profile' : 'home')))}

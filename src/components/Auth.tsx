@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, ArrowLeft, Loader2 } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 interface AuthProps {
   onAuthComplete: (userType: 'customer' | 'provider' | 'admin') => void;

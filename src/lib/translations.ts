@@ -30,6 +30,10 @@ export const translations = {
     en: 'Home',
     hi: 'होम'
   },
+  AI_Planner: {
+    en: 'AI Planner',
+    hi: 'होम'
+  },
   search: {
     en: 'Search',
     hi: 'खोजें'

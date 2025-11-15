@@ -10,7 +10,7 @@ import {
 } from './ui/dropdown-menu';
 import { useApp } from '@/context/AppContext';
 
-type NavTab = 'home' | 'search' | 'bookings' | 'profile' | 'provider-dashboard';
+type NavTab = 'home' | 'search' | 'bookings' | 'profile' | 'provider-dashboard' | 'aiplanner';
 
 interface DesktopNavProps {
   active: NavTab;
@@ -30,6 +30,7 @@ export function DesktopNav({
   const customerTabs = [
     { id: 'home' as NavTab, icon: Home, label: t('home', lang) },
     { id: 'search' as NavTab, icon: Search, label: t('search', lang) },
+    // { id: 'aiplanner' as NavTab, icon: Settings, label: t('AI_Planner', lang) }, // <-- AI Planner tab
     { id: 'bookings' as NavTab, icon: Calendar, label: t('my_bookings', lang) },
   ];
 
@@ -37,19 +38,17 @@ export function DesktopNav({
     { id: 'provider-dashboard' as NavTab, icon: LayoutDashboard, label: t('dashboard', lang) },
   ];
 
-  const {setUserType, userType} = useApp()
+  const { setUserType, userType } = useApp();
 
   const tabs = userType === 'customer' ? customerTabs : providerTabs;
 
-
   function handleSwitchtoUserType(){
-    if(userType == 'customer'){
-      setUserType("provider")
-    }else{
-      setUserType("customer")
+    if (userType == 'customer') {
+      setUserType("provider");
+    } else {
+      setUserType("customer");
     }
   }
-
 
   return (
     <nav className="hidden md:block fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">

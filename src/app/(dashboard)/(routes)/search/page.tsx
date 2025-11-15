@@ -1,24 +1,24 @@
-// pages/search.tsx
-"use client"
+'use client';
+
 import { SearchScreen } from '@/components/screens/SearchScreen';
 import { useApp } from '@/context/AppContext';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-
-export default function SearchPage() {
+ function SearchPage() {
   const router = useRouter();
-  const { selectedProviderId, setSelectedProviderId, language } = useApp();
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
 
-  // you can read router.query.q and router.query.category here
-  const q = searchParams.get("q");
-  const category = searchParams.get("category");
+  const { selectedProviderId, setSelectedProviderId, language } = useApp();
+
+  const q = searchParams.get("q") ?? "";
+  const category = searchParams.get("category") ?? "";
 
   return (
     
       <SearchScreen
         lang={language}
-        initialQuery={q ?? ''}
+        initialQuery={q}
         initialCategory={category as any}
         onBack={() => router.push('/home')}
         onProviderSelect={(id) => {
@@ -28,4 +28,11 @@ export default function SearchPage() {
       />
   
   );
+}
+
+
+export default function Search(){
+  <Suspense fallback={<div>Loading search...</div>}>
+    <SearchPage/>
+  </Suspense>
 }

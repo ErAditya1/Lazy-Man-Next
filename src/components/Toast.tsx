@@ -1,3 +1,4 @@
+'use client'
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle, XCircle, AlertCircle, Info, X } from 'lucide-react';
 import { createContext, useContext, useState, ReactNode } from 'react';
@@ -12,7 +13,7 @@ interface Toast {
 }
 
 interface ToastContextType {
-  showToast: (type: ToastType, message: string, messageHindi?: string) => void;
+  showToast: ( message: string, type: ToastType, messageHindi?: string) => void;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -20,7 +21,7 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
   
-  const showToast = (type: ToastType, message: string, messageHindi?: string) => {
+  const showToast = ( message: string,type: ToastType, messageHindi?: string) => {
     const id = Date.now().toString();
     setToasts((prev) => [...prev, { id, type, message, messageHindi }]);
     

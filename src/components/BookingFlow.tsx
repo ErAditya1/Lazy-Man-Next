@@ -4,7 +4,7 @@ import {
   ArrowLeft, Calendar, Clock, MapPin, ChevronRight,
   CreditCard, Wallet, Check, AlertCircle
 } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 const timeSlots = [
   '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
@@ -15,7 +15,7 @@ const timeSlots = [
 export default function BookingFlow() {
   const navigate = useNavigate();
   const { providerId } = useParams();
-  const [step, setStep] = useState<'service' | 'datetime' | 'address' | 'payment' | 'confirm'>(step');
+  const [step, setStep] = useState<'service' | 'datetime' | 'address' | 'payment' | 'confirm'>();
   
   const [selectedService, setSelectedService] = useState('');
   const [bookingType, setBookingType] = useState<'asap' | 'scheduled'>('asap');
@@ -108,7 +108,7 @@ export default function BookingFlow() {
           </button>
           <div>
             <h3>{getStepTitle()}</h3>
-            <p className="text-[#9CA3AF]">Step {['service', 'datetime', 'address', 'payment', 'confirm'].indexOf(step) + 1} of 5</p>
+            <p className="text-[#9CA3AF]">Step {['service', 'datetime', 'address', 'payment', 'confirm'].indexOf(step!) + 1} of 5</p>
           </div>
         </div>
 
@@ -117,7 +117,7 @@ export default function BookingFlow() {
           <div 
             className="h-full bg-[#FF6B35] transition-all duration-300"
             style={{ 
-              width: `${(['service', 'datetime', 'address', 'payment', 'confirm'].indexOf(step) + 1) * 20}%` 
+              width: `${(['service', 'datetime', 'address', 'payment', 'confirm'].indexOf(step!) + 1) * 20}%` 
             }}
           />
         </div>
@@ -252,7 +252,7 @@ export default function BookingFlow() {
             </div>
 
             <div className="p-4 bg-[#FEF3C7] border border-[#F59E0B] rounded-xl flex gap-3">
-              <AlertCircle className="w-5 h-5 text-[#F59E0B] flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-[#F59E0B] shrink-0 mt-0.5" />
               <div>
                 <p className="font-medium text-[#92400E]">Address Tip</p>
                 <p className="text-[#92400E]">Include nearby landmarks for easier navigation</p>
@@ -311,7 +311,7 @@ export default function BookingFlow() {
             </button>
 
             <div className="p-4 bg-[#DCFCE7] border border-[#16A34A] rounded-xl flex gap-3">
-              <Check className="w-5 h-5 text-[#16A34A] flex-shrink-0 mt-0.5" />
+              <Check className="w-5 h-5 text-[#16A34A] shrink-0 mt-0.5" />
               <div>
                 <p className="font-medium text-[#14532D]">Secure Payment</p>
                 <p className="text-[#14532D]">Your payment information is protected</p>
